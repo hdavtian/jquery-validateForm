@@ -37,7 +37,7 @@
         </div>
 
         <div class="field-wrapper">
-            <input type="text" name="Phone1" value="" placeholder="Phone Number" />
+            <input type="text" name="Phone" value="" placeholder="Phone Number" />
         </div>
 
         <div class="field-wrapper">
@@ -82,15 +82,11 @@
         submit: {
             success:
 
-            // $form is jq form selector
-            // 'values' arg is an array of key value pairs like this
-            // ["FirstName=john", "LastName=smith", "Email=jsmith%40gmail.com", "Phone1=8185551212", "tc=on", "Campaigns=", "State=CA"]
-
+                // 'values' arg is an array of key value pairs like this:
+                // ["FirstName=john", "LastName=smith", "Email=jsmith%40gmail.com", "Phone1=8185551212", "tc=on", "Campaigns=", "State=CA"]
                 function (values, $form) {
 
-                    // Logic in case of no errors
-
-                } /*success end*/
+                }
             ,
             fail:
                 function () {
@@ -134,7 +130,7 @@
                     }
                 }
             },
-            Phone1: {
+            Phone: {
                 friendlyName: "Phone Number",
                 rules: {
                     required: {
