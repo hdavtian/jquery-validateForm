@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery Plugin - ValidateForm</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<form class="signup-form">
+
+    <h4>Sample Form</h4>
+
+    <div class="global-form-errors"></div>
+
+    <div class="all-fields">
+
+        <div class="field-wrapper">
+            <input type="text" name="FirstName" value="" placeholder="First Name" />
+        </div>
+
+        <div class="field-wrapper">
+            <input type="text" name="LastName" value="" placeholder="Last Name" />
+        </div>
+
+        <div class="field-wrapper">
+            <input type="text" name="Email" value="" placeholder="Email Address" />
+        </div>
+
+        <div class="field-wrapper">
+            <input type="text" name="Zip" value="" placeholder="Zip Code" />
+        </div>
+
+        <div class="field-wrapper">
+            <input type="text" name="Phone1" value="" placeholder="Phone Number" />
+        </div>
+
+        <div class="field-wrapper">
+            <input type="checkbox" name="PrivacyPolicy" />
+            <label>I have read and agree with the <a href="#">Privacy Policy</a></label>
+        </div>
+
+    </div>
+
+    <input type="submit" name="name" value="Submit" />
+
+</form>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="jquery.validateForm-1.0.0.js"></script>
+
+<script>
+
+    $('.signup-form').validateForm({
+
+        styles: [
+            {
+                errorClass: "error"
+            }
+        ],
+
+        error_preferences: {
+            displayIndividualErrorMessages: false,
+            displayErroneousFields: true,
+            error_field_class: 'error',
+            error_msg_class: 'error2',
+            error_label_class: 'error-label',
+            error_msg_markup: function (msg, rule) { return '<div class="' + this.error_msg_class + ' ' + rule + '">' + msg + '</div>' }
+        },
+
+        submit_preferences: {
+            form_submit: false,
+            gather_all_values: true
+        },
+
+        submit: {
+            success:
+
+            // $form is jq form selector
+            // 'values' arg is an array of key value pairs like this
+            // ["FirstName=john", "LastName=smith", "Email=jsmith%40gmail.com", "Phone1=8185551212", "tc=on", "Campaigns=", "State=CA"]
+
+                function (values, $form) {
+
+                    // Logic in case of no errors
+
+                } /*success end*/
+            ,
+            fail:
+                function () {
+                    // Logic to handle in case of errors
+                }
+        },
+
+        fields: [{
+            FirstName: {
+                friendlyName: "First Name",
+                rules: {
+                    required: {
+                        errorMsg: 'First Name is required'
+                    }
+                }
+            },
+            LastName: {
+                friendlyName: "Last Name",
+                rules: {
+                    required: {
+                        errorMsg: 'Last Name is required'
+                    }
+                }
+            },
+            Email: {
+                friendlyName: "Email Address",
+                rules: {
+                    required: {
+                        errorMsg: 'Email Address is required'
+                    },
+                    validEmail: {
+                        errorMsg: 'Must be a valid email address'
+                    }
+                }
+            },
+            Zip: {
+                friendlyName: "Zip",
+                rules: {
+                    zipCode: {
+                        errorMsg: 'Zip code is required and must be 5 digits'
+                    }
+                }
+            },
+            Phone1: {
+                friendlyName: "Phone Number",
+                rules: {
+                    required: {
+                        errorMsg: 'Phone number is required'
+                    }
+                }
+            },
+            PrivacyPolicy: {
+                friendlyName: "Official Rules and Privacy Policy",
+                rules: {
+                    required: {
+                        errorMsg: 'Official Rules and Privacy Policy are required'
+                    }
+                }
+            }
+        }]
+    });
+
+</script>
+
+</body>
+</html>

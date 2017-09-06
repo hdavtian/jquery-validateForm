@@ -1,0 +1,9 @@
+.signup-form .field-wrapper {
+  margin: 15px; }
+.signup-form .error {
+  border: 1px solid red; }
+.signup-form input[type=checkbox].error {
+  border: 2px solid red;
+  outline: 2px solid red; }
+
+/*# sourceMappingURL=main.css.map */

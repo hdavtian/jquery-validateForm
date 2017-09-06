@@ -1,0 +1,16 @@
+.signup-form {
+
+  .field-wrapper {
+    margin: 15px;
+  }
+
+  .error {
+    border:1px solid red;
+  }
+
+  input[type=checkbox].error {
+    border: 2px solid red;
+    outline: 2px solid red;
+  }
+
+}//signup-form
